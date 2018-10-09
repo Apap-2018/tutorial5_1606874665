@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Informasi Dealer</title>
+	<object th:include="fragments/fragment :: title" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+
+	<h2>Informasi Dealer</h2>
+	<div th:each = "dealer: ${dealer}">
+		<h4 th:text= "'Id: ' + ${dealer.id}"></h4>
+		<h4 th:text= "'Alamat: ' + ${dealer.alamat}"></h4>
+		<h4 th:text= "'Telepon: ' + ${dealer.noTelp}"></h4>
+		<table>
+		  <tr>
+		    <th scope="col">Brand</th>
+		    <th scope="col">Type</th>
+		    <th scope="col">Price</th>
+		   	<th scope="col">Amount</th> 
+		  </tr>
+		  <tr th:each = "listCar: ${dealer.listCar}">
+		    <td th:text= "${listCar.brand}"></td>
+		    <td th:text= "${listCar.type}"></td>
+		    <td th:text= "${listCar.price}"></td>
+		    <td th:text= "${listCar.amount}"></td>
+		  </tr>
+		</table>
+		<h3>-------------------------------------------</h3>
+	</div>
+</body>
+
+</html>
